@@ -16,11 +16,14 @@ services:
     container_name: squid-proxy
     volumes:
       - shared-db:/etc/squid/auth
+      - cert-dir:/etc/squid/certs/
     ports:
       - "3128:3128"
+      - "3129:3129"
     depends_on:
       - sqlite-admin
 
 volumes:
   shared-db:
+  shared-dir:
 
