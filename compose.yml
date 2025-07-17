@@ -2,11 +2,12 @@ version: '3.8'
 
 services:
   sqlite-admin:
-    build:
-      context: ./sqlite
-    container_name: sqlite-admin
+    image: coleifer/sqlite-web
+    command: >
+      sh -c "sqlite3 /db/database.db < /docker-entrypoint-initdb.d/init.sql && sqlite_web /db/database.db -H 0.0.0.0 -p 8080"
     volumes:
       - shared-db:/db
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "8080:8080"
 
@@ -18,8 +19,7 @@ services:
       - shared-db:/etc/squid/auth
       - cert-dir:/etc/squid/certs/
     ports:
-      - "3128:3128"
-      - "3129:3129"
+      - "13129:3129"
     depends_on:
       - sqlite-admin
 

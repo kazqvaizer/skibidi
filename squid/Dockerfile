@@ -8,7 +8,6 @@ RUN apt-get update \
 
 COPY squid.conf /etc/squid/squid.conf
 
-EXPOSE 3128
 EXPOSE 3129
 
 VOLUME ["/etc/squid/auth"]

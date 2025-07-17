@@ -1,0 +1,24 @@
+# SQLite database files
+/data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker-related
+*.pid
+*.log
+.env
+docker-compose.override.yml
+
+# Ignore init SQL if sensitive
+init.sql
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
